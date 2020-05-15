@@ -2,5 +2,5 @@
 
 ```bash
 cd dotfiles
-stow --target ~ vim git
+stow --target ~ vim git zsh
 ```
