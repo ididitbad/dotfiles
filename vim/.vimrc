@@ -17,9 +17,6 @@ set number
 " enable mouse in all modes
 set mouse=a
 
-" highlight current line
-set cursorline
-
 " line and column number
 set ruler
 " set rulerformat=Line:\ %l,\ Column:\ %c
@@ -180,7 +177,6 @@ set termguicolors
 set background=dark
 
 " vertical rulers
-set colorcolumn=80,101
 highlight ColorColumn guibg=#2c2c2c
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -230,7 +226,7 @@ endfun
 " leader-s saving
 " noremap <expr> <leader>s TabIsNew() ? ':w! ' : ':w!<cr>'
 
-" leader-n opening new tab
+" leader-tn opening new tab
 noremap <expr> <leader>tn ':tabnew '
 
 " ctrl+d closing buffer
@@ -314,7 +310,7 @@ nmap <silent> ]a <Plug>(ale_next_wrap_error)
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
 let g:better_whitespace_operator = '<leader>s'
-let g:strip_only_modified_lines = 0
+let g:strip_only_modified_lines = 1
 let g:strip_whitespace_confirm = 0
 nnoremap ]w :NextTrailingWhitespace<CR>
 nnoremap [w :PrevTrailingWhitespace<CR>
@@ -325,6 +321,9 @@ highlight ExtraWhitespace cterm=underline guifg=Red
 
 " TODO: set spell not working
 silent! colorscheme gruvbox
+
+" transparent background
+highlight Normal guibg=NONE ctermbg=NONE
 
 " Goyo (zen-mode) -------------------------------------
 
