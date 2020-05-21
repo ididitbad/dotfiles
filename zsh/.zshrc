@@ -75,11 +75,14 @@ antigen bundle 'zsh-users/zsh-autosuggestions'
 antigen bundle 'zsh-users/zsh-completions'
 antigen bundle 'zsh-users/zsh-syntax-highlighting'
 
+antigen bundle 'wfxr/forgit'
+
 antigen apply
 
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
-
 ###############################################################################
+
+# powerlevel10k
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # FZF
 [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
@@ -103,3 +106,6 @@ fzf-ripvim-widget() {
 
 zle     -N   fzf-ripvim-widget
 bindkey '^F' fzf-ripvim-widget
+
+# thefuck
+eval $(thefuck --alias)
