@@ -12,7 +12,6 @@
 [help]
     autoCorrect = -1
 [push]
-    default = current
     followTags = true
 [rebase]
     autoStash = true
