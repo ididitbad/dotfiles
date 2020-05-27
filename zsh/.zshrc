@@ -76,6 +76,9 @@ antigen bundle 'zsh-users/zsh-syntax-highlighting'
 
 antigen bundle 'wfxr/forgit'
 
+antigen bundle 'changyuheng/fz'
+antigen bundle 'rupa/z'
+
 antigen apply
 
 ###############################################################################
