@@ -40,3 +40,5 @@
              COMMIT=$(git rev-parse $1) && \
              git commit --fixup=$COMMIT && \
              GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash $COMMIT~1' -"
+[pull]
+	ff = only
