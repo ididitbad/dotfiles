@@ -25,6 +25,7 @@ pkgs=(
     thefuck
     bat
     diff-so-fancy
+    ncdu
     exa
     broot
     python
@@ -37,12 +38,20 @@ aurs=(
     universal-ctags-git
 )
 
+pips=(
+    git-fame
+)
+
 pacman -S --noconfirm ${pkgs[*]}
 
 git clone https://aur.archlinux.org/yay.git /tmp/yay && cd $_
 makepkg -si --noconfirm
 
 yay -S --noconfirm ${aurs[*]}
+
+pip3 install ${pips[*]}
+
+#################################
 
 systemctl enable sshd.service
 systemctl start sshd.service

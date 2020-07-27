@@ -296,7 +296,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'airblade/vim-rooter'
 call plug#end()
+
+" vim-rooter ------------------------------------------
+
+let g:rooter_silent_chdir = 1
 
 " ale -------------------------------------------------
 
