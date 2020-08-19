@@ -14,6 +14,7 @@ setopt AUTO_CD
 setopt CDABLE_VARS
 setopt CD_SILENT
 
+setopt GLOB_DOTS
 setopt GLOB_STAR_SHORT
 
 setopt HIST_EXPIRE_DUPS_FIRST
