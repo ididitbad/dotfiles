@@ -162,8 +162,8 @@ set sidescrolloff=5
 set scrolloff=1
 
 " minimal window size
-set winwidth=50
-set winheight=25
+" set winwidth=50
+" set winheight=25
 
 " delete comment character when joining commented lines
 set formatoptions+=j
@@ -197,6 +197,7 @@ noremap <C-f> <C-f>zz
 
 " disable ctrl+arrows `deleting` behavior
 set term=xterm-256color
+
 " jumplist navigation
 noremap <C-Left> <C-o>
 noremap <C-Right> <C-i>
@@ -214,6 +215,32 @@ noremap <silent> <leader>w :set wrap!<cr>
 noremap <leader>v :vsplit<cr>
 noremap <leader>h :split<cr>
 
+
+if !exists('$TMUX')
+" move beetween windows
+noremap               <S-Up>                 <C-W>k
+noremap <S-Left>                             <C-W>h
+noremap                           <S-Right>  <C-W>l
+noremap              <S-Down>                <C-W>j
+
+" move windows
+noremap              <C-S-Up>                <C-W>K
+noremap <C-S-Left>                           <C-W>H
+noremap                         <C-S-Right>  <C-W>L
+noremap             <C-S-Down>               <C-W>J
+
+" move between tabs
+noremap <silent> <A-Right> :tabnext<cr>
+noremap <silent> <A-Left> :tabprevious<cr>
+
+" move tabs
+noremap <silent> <A-Up> :-tabmove<cr>
+noremap <silent> <A-Down> :+tabmove<cr>
+
+" create tabs
+noremap <silent> <F2> :tabnew<cr>
+endif
+
 fun! TabIsNew()
     " full path length
     return len(expand('%:p')) == 0
@@ -223,15 +250,15 @@ fun! BufferIsLast()
     return len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
 endfun
 
-" leader-s saving
-" noremap <expr> <leader>s TabIsNew() ? ':w! ' : ':w!<cr>'
+" ctrl-s saving
+noremap <expr> <C-s> TabIsNew() ? ':w! ' : ':w!<cr>'
 
 " leader-tn opening new tab
-noremap <expr> <leader>tn ':tabnew '
+noremap <expr> <leader>tn ':tabnew<cr>'
 
-" ctrl+d closing buffer
-" noremap <silent> <expr> <C-d> BufferIsLast() ? ':q<cr>' : ':bdelete!<cr>'
-" noremap <silent> <expr> <C-d> tabpagenr('$') == 1 ? ':q!<cr>' : ':tabclose!<cr>'
+" ctrl+q closing buffer
+noremap <silent> <expr> <C-q> BufferIsLast() ? ':q<cr>' : ':bdelete!<cr>'
+noremap <silent> <expr> <C-q> tabpagenr('$') == 1 ? ':q!<cr>' : ':tabclose!<cr>'
 
 " disable search highlighting
 nmap <silent> <leader>l :let @/ = ""<cr>
@@ -253,13 +280,17 @@ nmap <silent> <leader>p "+p
 " fast space add
 nmap <silent> <leader>a :normal a <cr>
 
-nmap <silent> <leader>r :set relativenumber!<cr>
+" toggle relative <-> absolute line numbers
+nmap <silent> <leader>n :set relativenumber!<cr>
 
 " Edit .vimrc
-command! VEdit :vsplit $MYVIMRC
+command! Vedit :vsplit $MYVIMRC
+nmap <silent> <leader>e :Vedit<cr>
+nmap <silent> <leader>E :split $MYVIMRC<cr>
 
 " Reload .vimrc
-command! VReload :source $MYVIMRC
+command! Vreload :source $MYVIMRC
+nmap <silent> <leader>r :Vreload<cr>
 
 " :W sudo saves the file with wrong permissions
 command! W w !sudo tee % > /dev/null
