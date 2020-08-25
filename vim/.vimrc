@@ -215,30 +215,29 @@ noremap <silent> <leader>w :set wrap!<cr>
 noremap <leader>v :vsplit<cr>
 noremap <leader>h :split<cr>
 
-
-if !exists('$TMUX')
-" move beetween windows
-noremap               <S-Up>                 <C-W>k
-noremap <S-Left>                             <C-W>h
-noremap                           <S-Right>  <C-W>l
-noremap              <S-Down>                <C-W>j
-
 " move windows
 noremap              <C-S-Up>                <C-W>K
 noremap <C-S-Left>                           <C-W>H
 noremap                         <C-S-Right>  <C-W>L
 noremap             <C-S-Down>               <C-W>J
 
-" move between tabs
-noremap <silent> <A-Right> :tabnext<cr>
-noremap <silent> <A-Left> :tabprevious<cr>
+if !exists('$TMUX')
+    " move beetween windows
+    noremap               <S-Up>                 <C-W>k
+    noremap <S-Left>                             <C-W>h
+    noremap                           <S-Right>  <C-W>l
+    noremap              <S-Down>                <C-W>j
 
-" move tabs
-noremap <silent> <A-Up> :-tabmove<cr>
-noremap <silent> <A-Down> :+tabmove<cr>
+    " move between tabs
+    noremap <silent> <A-Right> :tabnext<cr>
+    noremap <silent> <A-Left> :tabprevious<cr>
 
-" create tabs
-noremap <silent> <F2> :tabnew<cr>
+    " move tabs
+    noremap <silent> <A-Up> :-tabmove<cr>
+    noremap <silent> <A-Down> :+tabmove<cr>
+
+    " create tabs
+    noremap <silent> <F2> :tabnew<cr>
 endif
 
 fun! TabIsNew()
@@ -252,13 +251,17 @@ endfun
 
 " ctrl-s saving
 noremap <expr> <C-s> TabIsNew() ? ':w! ' : ':w!<cr>'
+noremap <silent> <leader>s :wa<cr>
 
 " leader-tn opening new tab
-noremap <expr> <leader>tn ':tabnew<cr>'
+noremap <leader>tn :tabnew<cr>
+noremap <leader>tq :tabclose!<cr>
+noremap <silent> <expr> <leader>tt tabpagenr('$') == 1 ? ':tabnew<cr>' : ':tabnext<cr>'
 
 " ctrl+q closing buffer
-noremap <silent> <expr> <C-q> BufferIsLast() ? ':q<cr>' : ':bdelete!<cr>'
-noremap <silent> <expr> <C-q> tabpagenr('$') == 1 ? ':q!<cr>' : ':tabclose!<cr>'
+noremap <silent> <C-q> :q<cr>
+" noremap <silent> <expr> <C-q> BufferIsLast() ? ':q<cr>' : ':bdelete!<cr>'
+noremap <silent> <leader>q :wqa!<cr>
 
 " disable search highlighting
 nmap <silent> <leader>l :let @/ = ""<cr>
@@ -284,9 +287,9 @@ nmap <silent> <leader>a :normal a <cr>
 nmap <silent> <leader>n :set relativenumber!<cr>
 
 " Edit .vimrc
-command! Vedit :vsplit $MYVIMRC
-nmap <silent> <leader>e :Vedit<cr>
-nmap <silent> <leader>E :split $MYVIMRC<cr>
+command! Vedit :edit $MYVIMRC
+nmap <silent> <expr> <leader>e TabIsNew() ? ':Vedit<cr>' : ':vsplit $MYVIMRC<cr>'
+nmap <silent> <expr> <leader>E TabIsNew() ? ':Vedit<cr>' : ':split $MYVIMRC<cr>'
 
 " Reload .vimrc
 command! Vreload :source $MYVIMRC
@@ -312,6 +315,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
+Plug 'airblade/vim-rooter'
 Plug 'dense-analysis/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
@@ -320,17 +324,24 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'maximbaz/lightline-ale'
 Plug 'morhetz/gruvbox'
-Plug 'sainnhe/gruvbox-material'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'sainnhe/gruvbox-material'
 Plug 'scrooloose/nerdcommenter'
+Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'airblade/vim-rooter'
-Plug 'sheerun/vim-polyglot'
 call plug#end()
+
+" vim-workspace ---------------------------------------
+let g:workspace_session_name = '.session.vim'
+let g:workspace_session_disable_on_args = 1
+let g:workspace_persist_undo_history = 0
+let g:workspace_autosave_untrailspaces = 0
+let g:workspace_autosave_untrailtabs = 0
 
 " vim-rooter ------------------------------------------
 
@@ -348,7 +359,7 @@ nmap <silent> ]a <Plug>(ale_next_wrap_error)
 
 let g:better_whitespace_enabled = 1
 let g:strip_whitespace_on_save = 1
-let g:better_whitespace_operator = '<leader>s'
+let g:better_whitespace_operator = '<leader>w'
 let g:strip_only_modified_lines = 1
 let g:strip_whitespace_confirm = 0
 nnoremap ]w :NextTrailingWhitespace<CR>
