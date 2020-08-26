@@ -108,6 +108,9 @@ set backspace=indent,eol,start
 
 set nrformats-=octal
 
+" Don't save hidden and unloaded buffers in sessions.
+set sessionoptions-=buffers
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                    SEARCH                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -317,6 +320,7 @@ endif
 call plug#begin()
 Plug 'airblade/vim-rooter'
 Plug 'dense-analysis/ale'
+Plug 'ididitbad/vim-workspace'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -329,16 +333,28 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
+" Plug 'mhinz/vim-startify'
 call plug#end()
+
+" " vim-startify ------------------------------------------
+" let g:startify_change_to_vcs_root = 1
+" let g:startify_session_autoload = 1
+" let g:startify_session_persistence = 1
+
+" " vim-session -----------------------------------------
+" let g:session_autosave = 'yes'
+" let g:session_autoload = 'yes'
+" let g:session_command_aliases = 1
 
 " vim-workspace ---------------------------------------
 let g:workspace_session_name = '.session.vim'
-let g:workspace_session_disable_on_args = 1
+" let g:workspace_session_disable_on_args = 1
 let g:workspace_persist_undo_history = 0
 let g:workspace_autosave_untrailspaces = 0
 let g:workspace_autosave_untrailtabs = 0
