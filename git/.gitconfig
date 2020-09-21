@@ -24,6 +24,11 @@
     tool = vimdiff
 [difftool]
     prompt = false
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = true
 [help]
     autoCorrect = -1
 [push]
@@ -42,5 +47,3 @@
              COMMIT=$(git rev-parse $1) && \
              git commit --fixup=$COMMIT && \
              GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash $COMMIT~1' -"
-[pull]
-	ff = only
