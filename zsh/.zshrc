@@ -90,6 +90,7 @@ antigen bundle 'wfxr/forgit'
 
 antigen bundle 'changyuheng/fz'
 antigen bundle 'rupa/z'
+# antigen bundle 'djui/alias-tips'
 
 antigen apply
 
@@ -127,4 +128,7 @@ bindkey '^F' fzf-ripvim-widget
 # thefuck
 eval $(thefuck --alias f)
 
-source /home/ididitbad/.config/broot/launcher/bash/br
+# source /home/ididitbad/.config/broot/launcher/bash/br
+
+# starship prompt
+# eval "$(starship init zsh)"

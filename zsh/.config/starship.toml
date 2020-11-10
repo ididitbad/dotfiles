@@ -1,0 +1,44 @@
+
+add_newline = false
+
+[cmd_duration]
+format = "[$duration]($style)"
+min_time = 5_000
+
+[directory]
+truncation_symbol = "…/"
+fish_style_pwd_dir_length = 6
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+style = "green"
+symbol = ""
+
+[git_state]
+rebase = "rebase"
+merge = "merge"
+revert = "revert"
+cherry-pick = "cherry-pick"
+bisect = "bisect"
+
+[git_status]
+format = "[($stashed )($conflicted )($deleted )($renamed )($modified )($untracked )($staged )($ahead_behind )]($style) "
+style = "green"
+stashed = "*$count"
+ahead = "⇡$count"
+behind= "⇣$count"
+diverged = "⇡⇣$count"
+conflicted = "=$count"
+deleted = "[!$count](red)"
+renamed = "»$count"
+modified = "!$count"
+untracked = "[?$count](blue)"
+staged = "+$count"
+
+[line_break]
+disabled = true
+
+[python]
+scan_for_pyfiles = false
+disabled = true
+

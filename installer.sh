@@ -31,6 +31,7 @@ pkgs=(
     python
     python-pip
     nmap
+    noto-fonts-emoji
 )
 
 aurs=(
@@ -72,3 +73,10 @@ rustup completions zsh cargo > ~/.zsh.d/_cargo
 
 curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
 chmod +x /usr/local/bin/cht.sh
+
+
+## fonts
+
+mkdir -pv ~/.local/share/fonts
+curl -fLo ~/.local/share/fonts/"Ubuntu Mono Nerd Font.ttf" \
+    https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete.ttf\?raw\=true

@@ -114,6 +114,12 @@ set sessionoptions-=buffers
 " equal window splits
 set equalalways
 
+" gtags
+" set cscopeprg=gtags-cscope
+" set nocscopeverbose
+" cscope add GTAGS
+" set cscopeverbose
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                    SEARCH                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -331,6 +337,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'maximbaz/lightline-ale'
 Plug 'morhetz/gruvbox'
 Plug 'ntpeters/vim-better-whitespace'
