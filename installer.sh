@@ -32,6 +32,7 @@ pkgs=(
     python-pip
     nmap
     noto-fonts-emoji
+    sshpass
 )
 
 aurs=(

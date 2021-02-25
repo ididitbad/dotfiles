@@ -27,6 +27,7 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
+	renamelimit = 14358
 [mergetool]
 	prompt = true
 [help]
