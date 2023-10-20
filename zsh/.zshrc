@@ -49,6 +49,13 @@ alias vim="dvim"
 # disable ctrl+s "hang" behavior
 stty -ixon
 
+if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
+    # turn off bell
+    xset b off 2>/dev/null
+    # 200 ms to start autorepeat with 35 Hz frequency
+    xset r rate 200 35 2>/dev/null
+fi
+
 #### PLUGINS ##################################################################
 
 if [[ ! -d ~/.antigen ]]; then
@@ -80,3 +87,19 @@ antigen apply
 export FZF_CTRL_T_OPTS="--exit-0 --preview '(highlight -O ansi -l {} || cat {} || tree -C {}) 2> /dev/null | less -F'"
 export FZF_ALT_C_OPTS="--exit-0 --preview 'tree -C -d --noreport {} | less'"
 
+fzf-ripvim-widget() {
+    local selected
+    setopt localoptions pipefail no_aliases 2> /dev/null
+    selected=$(eval rg --with-filename --hidden --line-number --no-heading --color=always --colors 'match:none' --smart-case -- . $BUFFER |
+               fzf --ansi -d: --with-nth=1,2,3 --nth=3 | awk -F':' '{print $1" +"$2}')
+    local ret=$?
+    if [ -n "$selected" ]; then
+        xargs -o vim <<< $selected
+        print -s "vim $selected"
+    fi
+    zle reset-prompt
+    return $ret
+}
+
+zle     -N   fzf-ripvim-widget
+bindkey '^F' fzf-ripvim-widget
