@@ -6,6 +6,9 @@ set nocompatible
 syntax enable
 filetype plugin indent on
 
+" match more than brackets
+packadd! matchit
+
 set number
 
 " break long lines
@@ -72,6 +75,8 @@ nmap <silent> <leader>E :edit $MYVIMRC<cr>
 nmap <silent> <leader>R :source $MYVIMRC<cr>
 nmap <silent> <leader>s :mksession! ~/.vim/session.vim<cr>
 nmap <silent> <leader>S :source ~/.vim/session.vim<cr>
+nmap <silent> <leader>t :terminal<cr>
+
 " move by visible lines in wrap mode
 nnoremap <Up> gk
 nnoremap <Down> gj
