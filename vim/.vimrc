@@ -288,7 +288,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'maximbaz/lightline-ale'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'sainnhe/gruvbox-material'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-multiple-cursors'
@@ -297,6 +298,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'airblade/vim-rooter'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 " vim-rooter ------------------------------------------
@@ -322,13 +324,13 @@ nnoremap [w :PrevTrailingWhitespace<CR>
 
 highlight ExtraWhitespace cterm=underline guifg=Red
 
-" gruvbox ---------------------------------------------
+" gruvbox-material ------------------------------------
 
 " TODO: set spell not working
-silent! colorscheme gruvbox
+silent! colorscheme gruvbox-material
 
 " transparent background
-highlight Normal guibg=NONE ctermbg=NONE
+" highlight Normal guibg=NONE ctermbg=NONE
 
 " Goyo (zen-mode) -------------------------------------
 
@@ -347,7 +349,7 @@ autocmd! User GoyoLeave Limelight!
 set noshowmode
 
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'gruvbox_material',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
