@@ -7,7 +7,11 @@ syntax enable
 filetype plugin indent on
 
 set number
+
+" break long lines
 set wrap
+" don't break words
+set linebreak
 
 set hlsearch
 set incsearch
@@ -23,6 +27,9 @@ set shiftwidth=4
 set tabstop=4
 " delete 4 spaces with <BS> in the beginning of the line
 set smarttab        
+" automatically insert comment leader when adding new line
+" and remove it when joining lines
+set formatoptions+=roj
 
 " number of lines around cursor
 set scrolloff=1
@@ -65,6 +72,14 @@ nmap <silent> <leader>E :edit $MYVIMRC<cr>
 nmap <silent> <leader>R :source $MYVIMRC<cr>
 nmap <silent> <leader>s :mksession! ~/.vim/session.vim<cr>
 nmap <silent> <leader>S :source ~/.vim/session.vim<cr>
+" move by visible lines in wrap mode
+nnoremap <Up> gk
+nnoremap <Down> gj
+nnoremap k gk
+nnoremap j gj
+" swap commands moving by visible and real lines
+nnoremap gk k
+nnoremap gj j
 " todo: maybe delete
 "nmap <silent> <leader>s :write<cr>
 nmap <silent> <leader>M :set mouse=a<cr>
