@@ -18,8 +18,8 @@
     old = red bold
     new = green bold
     whitespace = red reverse
-[init]
-    templatedir = ~/.git_template
+; [init]
+;     templatedir = ~/.git_template
 [diff]
     tool = vimdiff
 [difftool]
