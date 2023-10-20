@@ -93,6 +93,9 @@ antigen apply
 
 ###############################################################################
 
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#808080"
+
 # powerlevel10k
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
