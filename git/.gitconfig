@@ -33,6 +33,7 @@
 [help]
     autoCorrect = -1
 [push]
+    default = current
     followTags = true
 [pull]
     ff = only
