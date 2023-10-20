@@ -25,8 +25,6 @@ setopt HIST_REDUCE_BLANKS
 setopt INC_APPEND_HISTORY
 setopt SHARE_HISTORY
 
-setopt CORRECT
-
 fpath=(~/.zsh.d/ $fpath)
 
 ###############################################################################
@@ -49,6 +47,7 @@ alias vim="dvim"
 # disable ctrl+s "hang" behavior
 stty -ixon
 
+# TODO: move to .xinitrc?
 if [ -z "$SSH_CLIENT" ] && [ -z "$SSH_TTY" ]; then
     # turn off bell
     xset b off 2>/dev/null
