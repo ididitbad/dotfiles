@@ -1,0 +1,28 @@
+[include]
+    path = ~/.gitconfig.local
+[core]
+    editor = vim
+    excludesfile = ~/.git_ignore
+[init]
+    templatedir = ~/.git_template
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[help]
+    autoCorrect = -1
+[push]
+    default = current
+    followTags = true
+[rebase]
+    autoStash = true
+[stash]
+    showPatch = true
+[status]
+    showUntrackedFiles = all
+[alias]
+    fixup = "!sh -c '\
+             (git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && \
+             COMMIT=$(git rev-parse $1) && \
+             git commit --fixup=$COMMIT && \
+             GIT_SEQUENCE_EDITOR=: git rebase -i --autosquash $COMMIT~1' -"
