@@ -42,6 +42,8 @@ alias xclip="xclip -selection clipboard"
 alias top="top -o%MEM"
 alias diff="diff --color=auto"
 alias vim="dvim"
+alias v="dvim"
+alias e="exa -l"
 
 ###############################################################################
 
