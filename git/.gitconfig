@@ -28,6 +28,8 @@
     autoCorrect = -1
 [push]
     followTags = true
+[pull]
+    ff = only
 [rebase]
     autoStash = true
 [stash]
