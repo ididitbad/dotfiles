@@ -102,14 +102,12 @@ nnoremap <silent> <leader>t :terminal<cr>
 nnoremap <silent> <leader>h :help reference_toc<cr>
 
 " add empty lines
-" todo: add count
-nnoremap <silent> <leader>o o<C-u><Esc>
-nnoremap <silent> <leader>O O<C-u><Esc>
+map <silent> <leader>O O<Esc>
+map <silent> <leader>o o<Esc>
 
-" move lines
-" todo: add count
-nnoremap <silent> <leader><Up> :m -2<cr>
-nnoremap <silent> <leader><Down> :m +1<cr>
+" move lines (from: vim-unimpaired)
+map <silent> <leader><Up> [e
+map <silent> <leader><Down> ]e
 
 " move by visible lines in wrap mode
 nnoremap <Up> gk
@@ -136,6 +134,7 @@ endif
 
 call plug#begin()
 Plug 'morhetz/gruvbox'
+Plug 'tpope/vim-unimpaired'
 call plug#end()
 
 silent! colorscheme gruvbox
