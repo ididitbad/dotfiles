@@ -288,7 +288,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'maximbaz/lightline-ale'
-" Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'sainnhe/gruvbox-material'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
@@ -325,6 +325,9 @@ nnoremap [w :PrevTrailingWhitespace<CR>
 highlight ExtraWhitespace cterm=underline guifg=Red
 
 " gruvbox-material ------------------------------------
+
+let g:gruvbox_material_enable_bold = 1
+" let g:gruvbox_material_palette = 'original'
 
 " TODO: set spell not working
 silent! colorscheme gruvbox-material
@@ -494,6 +497,11 @@ augroup Win
     autocmd!
     autocmd WinEnter,BufEnter * :call SetRulerHighlights()
     autocmd WinLeave,BufLeave * setlocal nocursorline colorcolumn=
+augroup END
+
+augroup Vim
+    autocmd!
+    autocmd VimEnter * if &diff | silent! colorscheme gruvbox | endif
 augroup END
 
 augroup QuickFix
