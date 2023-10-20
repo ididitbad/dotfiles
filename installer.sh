@@ -9,6 +9,7 @@ pkgs=(
     ripgrep
     the_silver_searcher
     fd
+    tree
     fzf
     vim
     zsh
@@ -23,6 +24,7 @@ pkgs=(
     openssh
     thefuck
     bat
+    diff-so-fancy
 )
 
 aurs=(
