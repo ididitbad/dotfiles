@@ -110,4 +110,6 @@ zle     -N   fzf-ripvim-widget
 bindkey '^F' fzf-ripvim-widget
 
 # thefuck
-eval $(thefuck --alias)
+eval $(thefuck --alias f)
+
+source /home/ididitbad/.config/broot/launcher/bash/br
