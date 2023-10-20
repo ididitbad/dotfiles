@@ -1,4 +1,5 @@
 source $VIMRUNTIME/defaults.vim
+augroup vimHints | exe 'au!' | augroup END
 
 set nocompatible
 
@@ -46,15 +47,27 @@ set showmode
 set showcmd
 set ruler
 
+" tab-completion menu
 set wildmenu
+
+" no error bells
+set belloff=all
 
 " mappings
 let mapleader = " "
-nmap <silent> <leader>s :write<cr>
 nmap <silent> <leader>L :set list!<cr>
 nmap <silent> <leader>l :nohlsearch<cr>
 nmap <silent> <leader>w :set wrap!<cr>
-nmap <silent> <leader>m :set mouse=a<cr>
+nmap <silent> <leader>n :set number!<cr>
+nmap <silent> <leader>N :set relativenumber!<cr>
+" todo: check if buffer is already opened
+nmap <silent> <leader>E :edit $MYVIMRC<cr>
+nmap <silent> <leader>R :source $MYVIMRC<cr>
+nmap <silent> <leader>s :mksession! ~/.vim/session.vim<cr>
+nmap <silent> <leader>S :source ~/.vim/session.vim<cr>
+" todo: maybe delete
+"nmap <silent> <leader>s :write<cr>
+nmap <silent> <leader>M :set mouse=a<cr>
 
 " colors
 set background=dark
