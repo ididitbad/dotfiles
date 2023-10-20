@@ -1,0 +1,73 @@
+source $VIMRUNTIME/defaults.vim
+
+set nocompatible
+
+syntax enable
+filetype plugin indent on
+
+set number
+set wrap
+
+set hlsearch
+set incsearch
+
+" copy indent when adding new line
+set autoindent
+
+" use spaces instead of tabs
+set expandtab
+" use 4 spaces when using > and < commands
+set shiftwidth=4
+" use 4 spaces when inserting <Tab> character
+set tabstop=4
+" delete 4 spaces with <BS> in the beginning of the line
+set smarttab        
+
+" number of lines around cursor
+set scrolloff=1
+
+set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
+
+" buffers
+set hidden
+
+" windows
+set splitright
+set splitbelow
+set equalalways
+
+" don't show "search hit BOTTOM..."
+set shortmess+=s
+" don't show completion messages
+set shortmess+=c
+
+set showmode
+" show unfinished command
+set showcmd
+set ruler
+
+set wildmenu
+
+" mappings
+let mapleader = " "
+nmap <silent> <leader>s :write<cr>
+nmap <silent> <leader>L :set list!<cr>
+nmap <silent> <leader>l :nohlsearch<cr>
+nmap <silent> <leader>w :set wrap!<cr>
+nmap <silent> <leader>m :set mouse=a<cr>
+
+" colors
+set background=dark
+
+" plugins
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent! !curl -sfLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+Plug 'morhetz/gruvbox'
+call plug#end()
+
+silent! colorscheme gruvbox
