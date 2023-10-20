@@ -14,6 +14,8 @@ pkgs=(
     zsh
     ttf-ubuntu-font-family
     alacritty
+    # vs
+    kitty
     tmux
     byobu
     telegram-desktop
