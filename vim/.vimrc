@@ -111,6 +111,9 @@ set nrformats-=octal
 " Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=buffers
 
+" equal window splits
+set equalalways
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                    SEARCH                                                         "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,6 +246,9 @@ if !exists('$TMUX')
     noremap <silent> <F2> :tabnew<cr>
 endif
 
+" noremap <leader>t :vertical terminal<cr>
+" noremap <leader>T :terminal<cr>
+
 fun! TabIsNew()
     " full path length
     return len(expand('%:p')) == 0
@@ -254,12 +260,12 @@ endfun
 
 " ctrl-s saving
 noremap <expr> <C-s> TabIsNew() ? ':w! ' : ':w!<cr>'
-noremap <silent> <leader>s :wa<cr>
+noremap <silent> <leader>S :wa<cr>
 
 " leader-tn opening new tab
 noremap <leader>tn :tabnew<cr>
 noremap <leader>tq :tabclose!<cr>
-noremap <silent> <expr> <leader>tt tabpagenr('$') == 1 ? ':tabnew<cr>' : ':tabnext<cr>'
+" noremap <silent> <expr> <leader>tt tabpagenr('$') == 1 ? ':tabnew<cr>' : ':tabnext<cr>'
 
 " ctrl+q closing buffer
 noremap <silent> <C-q> :q<cr>
@@ -320,7 +326,6 @@ endif
 call plug#begin()
 Plug 'airblade/vim-rooter'
 Plug 'dense-analysis/ale'
-Plug 'ididitbad/vim-workspace'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -337,27 +342,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-" Plug 'xolox/vim-misc'
-" Plug 'xolox/vim-session'
-" Plug 'mhinz/vim-startify'
 call plug#end()
 
-" " vim-startify ------------------------------------------
-" let g:startify_change_to_vcs_root = 1
-" let g:startify_session_autoload = 1
-" let g:startify_session_persistence = 1
-
-" " vim-session -----------------------------------------
-" let g:session_autosave = 'yes'
-" let g:session_autoload = 'yes'
-" let g:session_command_aliases = 1
-
-" vim-workspace ---------------------------------------
-let g:workspace_session_name = '.session.vim'
-" let g:workspace_session_disable_on_args = 1
-let g:workspace_persist_undo_history = 0
-let g:workspace_autosave_untrailspaces = 0
-let g:workspace_autosave_untrailtabs = 0
+cabbrev pc PlugClean!
+cabbrev pi PlugInstall
+cabbrev pu PlugUpdate
 
 " vim-rooter ------------------------------------------
 
@@ -552,4 +541,3 @@ augroup QuickFix
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    cwindow
 augroup END
-
