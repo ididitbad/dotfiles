@@ -2,5 +2,5 @@
 
 ```bash
 cd dotfiles
-stow --target ~ vim git zsh alacritty tmux
+stow --target ~ vim git zsh alacritty tmux user-dirs
 ```
