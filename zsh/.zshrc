@@ -38,6 +38,12 @@ function dvim() {
     fi
 }
 
+function rush() {
+    ssh-keygen -R "$1" 1>&2 > /dev/null
+    sshpass -p "12345678" ssh-copy-id -o StrictHostKeyChecking=no "root@$1"
+    sshpass -p "12345678" ssh -o StrictHostKeyChecking=no "root@$1"
+}
+
 alias xclip="xclip -selection clipboard"
 alias top="top -o%MEM"
 alias diff="diff --color=auto"

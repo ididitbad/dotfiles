@@ -348,6 +348,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-fugitive'
 " Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
+Plug 'mbbill/undotree'
 Plug 'tpope/vim-unimpaired'
 call plug#end()
 
@@ -440,7 +441,7 @@ cnoreabbrev rg <C-r>=(getcmdtype()==':' && getcmdpos()==1 ? 'Rag' : 'rg')<cr>
 command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" leader-ff search all open buFfers contents
+" leader-ff search all open buffers contents
 noremap <expr> <silent> <leader>ff BufferIsLast() ? ':BLines<cr>' : ':Lines<cr>'
 " leader-F recursive search in Files in current directory
 noremap <silent> <leader>F :Rg<cr>
