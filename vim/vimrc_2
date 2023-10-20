@@ -9,19 +9,37 @@ filetype plugin indent on
 " match more than brackets
 packadd! matchit
 
+" DISPLAY
+"
+" line numbers
 set number
-
 " break long lines
 set wrap
 " don't break words
 set linebreak
+" number of lines/columns around cursor
+set scrolloff=5
+set sidescrolloff=5
+" scroll one column at a time
+set sidescroll=1
 
+
+" SEARCH
+"
+" highlight search
 set hlsearch
+" incremental search
 set incsearch
+" ignore case
+set ignorecase
+" do not ignore case when capital letters are used
+set smartcase
 
+
+" FORMATTING
+"
 " copy indent when adding new line
 set autoindent
-
 " use spaces instead of tabs
 set expandtab
 " use 4 spaces when using > and < commands
@@ -34,15 +52,19 @@ set smarttab
 " and remove it when joining lines
 set formatoptions+=roj
 
-" number of lines around cursor
-set scrolloff=1
 
+" invisible characters
 set listchars=eol:$,tab:>-,trail:·,extends:>,precedes:<
 
-" buffers
+
+" BUFFERS
+"
+" abandon buffer without prompt
 set hidden
 
-" windows
+
+" WINDOWS
+"
 set splitright
 set splitbelow
 set equalalways
@@ -52,8 +74,8 @@ set shortmess+=s
 " don't show completion messages
 set shortmess+=c
 
-set showmode
 " show unfinished command
+set showmode
 set showcmd
 set ruler
 
@@ -63,19 +85,31 @@ set wildmenu
 " no error bells
 set belloff=all
 
-" mappings
+" MAPPINGS
+"
 let mapleader = " "
-nmap <silent> <leader>L :set list!<cr>
-nmap <silent> <leader>l :nohlsearch<cr>
-nmap <silent> <leader>w :set wrap!<cr>
-nmap <silent> <leader>n :set number!<cr>
-nmap <silent> <leader>N :set relativenumber!<cr>
+nnoremap <silent> <leader>L :set list!<cr>
+nnoremap <silent> <leader>l :nohlsearch<cr>
+nnoremap <silent> <leader>w :set wrap!<cr>
+nnoremap <silent> <leader>n :set number!<cr>
+nnoremap <silent> <leader>N :set relativenumber!<cr>
 " todo: check if buffer is already opened
-nmap <silent> <leader>E :edit $MYVIMRC<cr>
-nmap <silent> <leader>R :source $MYVIMRC<cr>
-nmap <silent> <leader>s :mksession! ~/.vim/session.vim<cr>
-nmap <silent> <leader>S :source ~/.vim/session.vim<cr>
-nmap <silent> <leader>t :terminal<cr>
+nnoremap <silent> <leader>E :edit $MYVIMRC<cr>
+nnoremap <silent> <leader>R :source $MYVIMRC<cr>
+nnoremap <silent> <leader>s :mksession! ~/.vim/session.vim<cr>
+nnoremap <silent> <leader>S :source ~/.vim/session.vim<cr>
+nnoremap <silent> <leader>t :terminal<cr>
+nnoremap <silent> <leader>h :help reference_toc<cr>
+
+" add empty lines
+" todo: add count
+nnoremap <silent> <leader>o o<C-u><Esc>
+nnoremap <silent> <leader>O O<C-u><Esc>
+
+" move lines
+" todo: add count
+nnoremap <silent> <leader><Up> :m -2<cr>
+nnoremap <silent> <leader><Down> :m +1<cr>
 
 " move by visible lines in wrap mode
 nnoremap <Up> gk
@@ -85,14 +119,15 @@ nnoremap j gj
 " swap commands moving by visible and real lines
 nnoremap gk k
 nnoremap gj j
+
 " todo: maybe delete
 "nmap <silent> <leader>s :write<cr>
 nmap <silent> <leader>M :set mouse=a<cr>
 
-" colors
+" COLORS
 set background=dark
 
-" plugins
+" PLUGINS
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent! !curl -sfLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
